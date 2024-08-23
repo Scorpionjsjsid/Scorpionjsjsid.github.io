@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .slider-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: margin-left 0.3s ease;
+    }
+
+    .slider-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .slider-container img.active {
+      opacity: 1;
+    }
+
+    /* Navbar Inferior */
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      width: 200%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 3;
+      transition: margin-left 0.3s ease;
+    }
+
+    .navbar img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    /* Navbar Lateral */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -70px;
+      width: 70px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9); /* Cor escura e opaca */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      transition: left 0.3s ease;
+      z-index: 3;
+      border: none; /* Remove borda */
+      box-shadow: none; /* Remove sombras */
+    }
+
+    .sidebar a {
+      display: block;
+      margin-bottom: 20px;
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .sidebar a i {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    .sidebar a:hover i {
+      color: #ddd;
+    }
+
+    .sidebar-open .sidebar {
+      left: 0;
+    }
+
+    /* Botão para abrir a sidebar */
+    .sidebar-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 4;
+    }
+
+    .sidebar-open .slider-container {
+      margin-left: 70px;
+    }
+
+    .sidebar-open .navbar {
+      margin-left: 70px;
+    }
+
+    .chat-container {
+      position: absolute;
+      bottom: 100px;
+      left: 70px;
+      max-width: 400px;
+      background-color: rgba(255, 255, 255, 0.3);
+      padding: 5px;
+    }
+
+    .message {
+      margin-bottom: 10px;
+    }
+  </style>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Botão para abrir a sidebar -->
+  <button class="sidebar-toggle" id="toggle-sidebar">☰</button>
+
+  <!-- Navbar Lateral -->
+  <div class="sidebar" id="sidebar">
+    <a href="#"><i class="fa"></i></a>
+    <a href="https://md8vrt.csb.app/"><i class="fas fa-home"></i></a>
+    <a href="https://j6glyz.csb.app/"><i class="fas fa-user"></i></a>
+    <a href="https://bento.me/soyai"><i class="fa-duotone fa-solid fa-cart-shopping"></i></a>
+    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+    <a href="#"><i class="fa-solid fa-microphone"></i></a>
+  </div>
+
+  <div class="slider-container">
+    <img src="https://images2.imgbox.com/7c/c6/tDsCWLRm_o.jpg" alt="Slide Image 1" class="active">
+    <img src="https://images2.imgbox.com/55/74/hpO3kJRE_o.jpg" alt="Slide Image 2">
+    <img src="https://images2.imgbox.com/a8/2c/OSYci07l_o.jpg" alt="slide Image 3">
+    <img src="https://images2.imgbox.com/e0/8a/p8Ef1X2f_o.jpg" alt="slide Image 4">
+    <img src="https://images2.imgbox.com/a0/54/RFSyG23w_o.jpg" alt="slide Image 5">
+    <img src="https://images2.imgbox.com/24/48/ZvN7chW4_o.jpg" alt="Slide Image 6">
+    <img src="https://images2.imgbox.com/8a/4b/85Y1VPaj_o.jpg" alt="Slide Image 7">
+    <img src="https://images2.imgbox.com/11/ab/L7tWZn8Q_o.jpg" alt="slide Image 8">
+    <img src="https://images2.imgbox.com/e0/c6/II3Wmtbm_o.jpg" alt="slide Image 9">
+    <img src="https://images2.imgbox.com/41/31/8wk4z20j_o.jpg" alt="Slide Image 10">
+    <img src="https://images2.imgbox.com/fb/ad/epfKMtBA_o.jpg" alt="slide Image 11">
+    <img src="https://images2.imgbox.com/f0/fd/eWwohf36_o.jpg" alt="slide Image 12">
+    <img src="https://images2.imgbox.com/a4/63/P5jcH47O_o.jpg" alt="slide Image 13">
+    <img src="https://images2.imgbox.com/3a/cd/54OuX5AS_o.jpg" alt="slide Image 14">
+    <img src="https://images2.imgbox.com/9a/11/Spx7NF22_o.jpg" alt="slide Image 15">
+     </div>
+
+  <!-- Navbar Inferior -->
+  <div class="navbar" id="navbar">
+   <a href="#"><img src="https://images2.imgbox.com/44/33/ErzC6o8y_o.jpg" alt="Image 1"></a>
+      <a href="#"><img src="https://images2.imgbox.com/e9/b0/18yAhPbG_o.jpg" alt="Image 2"></a>
+      <a href="#"><img src="https://images2.imgbox.com/7c/c6/tDsCWLRm_o.jpg" alt="Image 3"></a>
+      <a href="#"><img src="https://images2.imgbox.com/17/d4/6BGzeSk0_o.jpg" alt="Image 4"></a>
+      <a href="#"><img src="https://images2.imgbox.com/c8/d2/giw4mMF2_o.jpg" alt="Image 5"></a>
+      <a href="#"><img src="https://images2.imgbox.com/58/a8/mq3g08ny_o.jpg" alt="Image 6"></a>
+      <a href="#"><img src="https://images2.imgbox.com/70/96/aHu2prZe_o.jpg" alt="Image 7"></a>
+      <a href="#"><img src="https://images2.imgbox.com/85/f2/HVp4IZ7w_o.jpg" alt="Image 8"></a>
+      <a href="#"><img src="https://images2.imgbox.com/05/34/Kxtoyxzq_o.jpg" alt="Image 9"></a>
+      <a href="#"><img src="https://images2.imgbox.com/97/11/7l2ACHzY_o.jpg" alt="Image 10"></a>
+      <a href="#"><img src="https://images2.imgbox.com/3a/a2/QAY9uFUn_o.jpg" alt="Image 11"></a>
+  </div>
+
+  <script>
+    var images = document.querySelectorAll('.slider-container img');
+    var currentIndex = 0;
+
+    function nextSlide() {
+      images[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.add('active');
+      setTimeout(nextSlide, 5000); // Tempo de transição
+    }
+
+    setTimeout(nextSlide, 5000);
+
+    // Toggle sidebar visibility
+    var sidebar = document.getElementById('sidebar');
+    var toggleButton = document.getElementById('toggle-sidebar');
+    var body = document.body;
+
+    toggleButton.addEventListener('click', function() {
+      if (sidebar.style.left === '0px') {
+        sidebar.style.left = '-70px'; // Oculta a sidebar
+        body.classList.remove('sidebar-open');
+      } else {
+        sidebar.style.left = '0px'; // Exibe a sidebar
+        body.classList.add('sidebar-open');
+      }
+    });
+
+    // Ocultar sidebar ao clicar fora
+    document.addEventListener('click', function(event) {
+      if (!sidebar.contains(event.target) && !toggleButton.contains(event.target)) {
+        sidebar.style.left = '-70px'; // Oculta a sidebar
+        body.classList.remove('sidebar-open');
+      }
+    });
+
+    // Função para mover a navbar inferior automaticamente
+    function moveNavbar() {
+      var navbar = document.getElementById('navbar');
+      var position = 0;
+      var speed = 0.3; // Velocidade da animação
+
+      function animate() {
+        position -= speed;
+        if (position <= -navbar.offsetWidth / 2) {
+          position = 0;
+        }
+        navbar.style.transform = 'translateX(' + position + 'px)';
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+    }
+
+    moveNavbar();
+  </script>
+</body>
+</html>
+
+  
